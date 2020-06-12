@@ -21,7 +21,7 @@ namespace TravepRecordApp
         private void LogInButton_Clicked(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(entUser.Text)) { }
-            if (string.IsNullOrEmpty(entPassword.Text)) { }
+            if (string.IsNullOrEmpty(entPassword.Text)) { } 
         }
     }
 }
