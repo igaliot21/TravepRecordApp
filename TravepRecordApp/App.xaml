@@ -6,6 +6,18 @@
              mc:Ignorable="d"
              x:Class="TravepRecordApp.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <Color x:Key="blueColor">#1E90FF</Color>
+            <Color x:Key="whiteColor">#FFFFFF</Color>
+            <Color x:Key="blackColor">#000000</Color>
+            <Style x:Key="normalButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource blueColor}"></Setter>
+                <Setter Property="TextColor" Value="{StaticResource whiteColor}"></Setter>
+            </Style>            
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource blueColor}"></Setter>
+                <Setter Property="TextColor" Value="{StaticResource blackColor}"></Setter>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
