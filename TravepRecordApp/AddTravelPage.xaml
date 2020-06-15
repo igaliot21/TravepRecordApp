@@ -5,11 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="TravepRecordApp.AddTravelPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="btnSaveTravel" Text="Save" Clicked="btnSaveTravel_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Add Travel Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Margin="20,50,20,1">
+            <Editor x:Name="editExperience" Placeholder="Entry your experience" HeightRequest="300"></Editor>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
