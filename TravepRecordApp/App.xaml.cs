@@ -10,7 +10,7 @@ namespace TravepRecordApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage()); // if you more than one page on you app you need a navigation page to take care of the back and forth between pages
         }
 
         protected override void OnStart()

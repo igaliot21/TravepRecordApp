@@ -20,8 +20,23 @@ namespace TravepRecordApp
 
         private void LogInButton_Clicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(entUser.Text)) { }
-            if (string.IsNullOrEmpty(entPassword.Text)) { } 
+            bool switchEnter = false;
+            if (string.IsNullOrEmpty(entUser.Text))
+            {
+                entUser.Placeholder = "Enter User Email";
+                switchEnter = false;
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(entPassword.Text))
+                {
+                    entPassword.Placeholder = "Enter User Password";
+                    switchEnter = false;
+                }
+                else switchEnter = true;
+            }
+
+            if (switchEnter) Navigation.PushAsync(new HomePage());
         }
     }
 }
