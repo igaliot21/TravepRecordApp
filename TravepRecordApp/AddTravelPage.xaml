@@ -10,7 +10,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Margin="20,50,20,1">
-            <Editor x:Name="editExperience" Placeholder="Entry your experience" HeightRequest="300"></Editor>
+            <Editor x:Name="editExperience" Placeholder="Entry your experience" HeightRequest="250"></Editor>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -5,11 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="TravepRecordApp.HistoryPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="History Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+    <ListView x:Name="listViewPost" Margin="10">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding Experience,Mode=OneWay}"></TextCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
 </ContentPage>

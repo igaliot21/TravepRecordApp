@@ -11,7 +11,7 @@ namespace TravepRecordApp.Models
         private string experience;
 
         public Post() { }
-        public Post(string Expirience) {
+        public Post(string Experience) {
             this.experience = Experience;
         }
 
