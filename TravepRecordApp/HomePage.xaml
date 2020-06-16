@@ -7,7 +7,8 @@
              mc:Ignorable="d"
              x:Class="TravepRecordApp.HomePage">
     <TabbedPage.ToolbarItems>
-        <ToolbarItem x:Name="btnAdd" Text="+" IconImageSource="icons/plus.png" Clicked="btnAdd_Clicked" />
+        <!-- <ToolbarItem x:Name="btnAdd" Text="+" IconImageSource="icons/plus.png" Clicked="btnAdd_Clicked" /> -->
+        <ToolbarItem x:Name="btnAdd" Text="+" Clicked="btnAdd_Clicked" />
     </TabbedPage.ToolbarItems>
     <local:HistoryPage Title="History"></local:HistoryPage>
     <local:MapPage Title="Map"></local:MapPage>
