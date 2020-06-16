@@ -9,6 +9,8 @@ using Xamarin.Forms.Xaml;
 using TravepRecordApp.Models;
 using SQLite;
 using System.Data;
+using Plugin.Geolocator;
+using TravepRecordApp.Logic;
 
 namespace TravepRecordApp
 {
@@ -18,6 +20,16 @@ namespace TravepRecordApp
         public AddTravelPage()
         {
             InitializeComponent();
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            
+            var locator = CrossGeolocator.Current;
+            var position = await locator.GetPositionAsync();
+            var venues = await VenueLogic.GetVenues(position.Latitude,position.Longitude);
+
         }
 
         private void btnSaveTravel_Clicked(object sender, EventArgs e)
