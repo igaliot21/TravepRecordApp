@@ -6,10 +6,18 @@
              mc:Ignorable="d"
              x:Class="TravepRecordApp.ProfilePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Profile Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Margin="20,40,20,0">
+            <Label x:Name="lblPostCount" HorizontalOptions="Center" Text="---"
+                TextColor="{StaticResource blueColor}" FontAttributes="Bold"  FontSize="20"/>
+            <Label VerticalOptions="Center" Text="Post" HorizontalOptions="Center"
+                TextColor="DarkSlateGray" FontAttributes="Bold" FontSize="20" />
+            <ListView x:Name="listviewCategories" Margin="0,20,0,10">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Path=Key}" Detail="{Binding Path=Value}"></TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
