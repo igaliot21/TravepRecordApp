@@ -10,7 +10,28 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Margin="20,50,20,1">
-            <Editor x:Name="editExperience" Placeholder="Entry your experience" HeightRequest="250"></Editor>
+            <Editor x:Name="editExperience" Placeholder="Entry your experience" HeightRequest="150"></Editor>
+            <ListView x:Name="listViewVenues" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding name}" FontAttributes="Bold"></Label>
+                                <Label Grid.Row="1" Grid.Column="0" TextColor="{StaticResource blueColor}" Text="{Binding location.address}"></Label>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding location.distance, StringFormat='{0} m'}"></Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

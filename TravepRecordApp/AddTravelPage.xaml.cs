@@ -29,29 +29,49 @@ namespace TravepRecordApp
             var locator = CrossGeolocator.Current;
             var position = await locator.GetPositionAsync();
             var venues = await VenueLogic.GetVenues(position.Latitude,position.Longitude);
+            
+            listViewVenues.ItemsSource = venues;
 
         }
 
         private void btnSaveTravel_Clicked(object sender, EventArgs e)
         {
-            Post post = new Post(editExperience.Text);
-
-            /*
-            SQLiteConnection conn = new SQLiteConnection(App.DBLocation);
-            conn.CreateTable<Post>();
-            int rows=conn.Insert(post); //this returns the number of rows inserted
-            conn.Close();
-            */
-            using (SQLiteConnection conn = new SQLiteConnection(App.DBLocation)) // this way you don't have to remember to close de connection
+            try
             {
-                conn.CreateTable<Post>();
-                int rows = conn.Insert(post); //this returns the number of rows inserted
+                if (string.IsNullOrEmpty(editExperience.Text)) DisplayAlert("Meeeec!!", "You HAVE to write something, anything, i won't judge... much...", "Ok");
+                else
+                {
+                    //Post post = new Post(editExperience.Text);
+                    Venue selectedVenue = listViewVenues.SelectedItem as Venue;
+                    Post post = new Post(editExperience.Text, selectedVenue.name, selectedVenue.location.address,
+                                         selectedVenue.location.lat, selectedVenue.location.lng,
+                                         selectedVenue.categories.FirstOrDefault().id, selectedVenue.categories.FirstOrDefault().name);
 
-                if (rows > 0){
-                    DisplayAlert("Sucess", "Experience succesfully inserted", "Ok");
-                    Navigation.PushAsync(new HomePage());
+                    /*
+                    SQLiteConnection conn = new SQLiteConnection(App.DBLocation);
+                    conn.CreateTable<Post>();
+                    int rows=conn.Insert(post); //this returns the number of rows inserted
+                    conn.Close();
+                    */
+                    using (SQLiteConnection conn = new SQLiteConnection(App.DBLocation)) // this way you don't have to remember to close de connection
+                    {
+                        conn.CreateTable<Post>();
+                        int rows = conn.Insert(post); //this returns the number of rows inserted
+
+                        if (rows > 0)
+                        {
+                            DisplayAlert("Sucess", "Experience succesfully inserted", "Ok");
+                            Navigation.PushAsync(new HomePage());
+                        }
+                        else DisplayAlert("Meeeec!!", "Experience failed to be inserted", "Ok");
+                    }
                 }
-                else DisplayAlert("Meeeec!!", "Experience failed to be inserted", "Ok");
+            }
+            catch (NullReferenceException nrex){
+
+            }
+            catch (Exception ex) { 
+
             }
         }
     }

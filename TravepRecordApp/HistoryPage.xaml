@@ -8,7 +8,17 @@
     <ListView x:Name="listViewPost" Margin="10">
         <ListView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding Experience,Mode=OneWay}"></TextCell>
+                <ViewCell>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="{Binding Experience}" FontAttributes="Bold"></Label>
+                        <Button Grid.Column="1" x:Name="btnDeleteHistory" Clicked="btnDeleteHistory_Clicked" 
+                                Text="X" BackgroundColor="Red" TextColor="White"></Button>
+                    </Grid>
+                </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
