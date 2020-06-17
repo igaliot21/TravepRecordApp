@@ -16,6 +16,8 @@ namespace TravepRecordApp
         public MainPage()
         {
             InitializeComponent();
+            var assembly = typeof(MainPage);
+            imgMainPage.Source = ImageSource.FromResource("TravepRecordApp.Resources.Images.plane.png",assembly);
         }
 
         private void LogInButton_Clicked(object sender, EventArgs e)

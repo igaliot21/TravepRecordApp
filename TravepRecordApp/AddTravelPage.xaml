@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="TravepRecordApp.AddTravelPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="btnSaveTravel" Text="Save" Clicked="btnSaveTravel_Clicked"></ToolbarItem>
+        <ToolbarItem x:Name="btnSaveTravel" Text="Save" IconImageSource="save.png" Clicked="btnSaveTravel_Clicked"></ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Margin="20,50,20,1">

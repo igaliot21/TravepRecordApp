@@ -62,6 +62,9 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <AppExtensionDebugBundleId />
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -145,7 +148,77 @@
       <Name>TravepRecordApp</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <BundleResource Include="Resources\icons\plus.png" />
+    <BundleResource Include="Resources\add%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\add%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\customer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\customer%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\customer%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delete%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delete%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\home%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\home%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\list%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\list%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\map%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\map%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\phonelink-setup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\phonelink-setup%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\phonelink-setup%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\save%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\save%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\add.png" />
   </ItemGroup>
 </Project>

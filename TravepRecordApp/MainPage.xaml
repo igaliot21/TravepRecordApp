@@ -7,10 +7,13 @@
              x:Class="TravepRecordApp.MainPage">
 
     <StackLayout VerticalOptions="CenterAndExpand" Margin="15,0,15,0">
+        <Image x:Name="imgMainPage" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+        <!--
         <Label Text="Enter your Login Email and Password" 
            HorizontalOptions="Center"
            VerticalOptions="Center" FontSize="Large" Margin="0,0,0,150" />
-        <Entry x:Name="entUser" Placeholder="User Email" Text="user@mail.com" Keyboard="Email" TextColor="{StaticResource blueColor}"></Entry>
+        -->
+        <Entry x:Name="entUser" Placeholder="User Email" Text="user@mail.com" Margin="0,30,0,0" Keyboard="Email" TextColor="{StaticResource blueColor}"></Entry>
         <Entry x:Name="entPassword" Placeholder="User Password" Text="password" IsPassword="True" TextColor="{StaticResource blueColor}"></Entry>
         <Button x:Name="LogInButton" Text="Log In" 
                 Clicked="LogInButton_Clicked"
