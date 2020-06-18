@@ -1,9 +1,11 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TravepRecordApp.Models;
 using Xamarin.Forms;
 
 namespace TravepRecordApp
@@ -26,6 +28,7 @@ namespace TravepRecordApp
             if (string.IsNullOrEmpty(entUser.Text))
             {
                 entUser.Placeholder = "Enter User Email";
+                entUser.PlaceholderColor = Color.Red;
                 switchEnter = false;
             }
             else
@@ -33,12 +36,29 @@ namespace TravepRecordApp
                 if (string.IsNullOrEmpty(entPassword.Text))
                 {
                     entPassword.Placeholder = "Enter User Password";
+                    entPassword.PlaceholderColor = Color.Red;
                     switchEnter = false;
                 }
                 else switchEnter = true;
             }
+            using (SQLiteConnection conn = new SQLiteConnection(App.DBLocation)) 
+            {
+                conn.CreateTable<User>();
+                User userLogging = conn.Table<User>().ToList().Find(u => u.Email == entUser.Text && u.Password == entPassword.Text);
+                //List<User> userTable = conn.Table<User>().ToList();
+                //User userLogged = userTable.Find(u => u.Email == entUser.Text && u.Password == entPassword.Text);
+                if (userLogging == null) {
+                    DisplayAlert("Meeeec!!", "Email or password are incorrect", "Ok");
+                    switchEnter = false;
+                }
+                else App.userLogged = userLogging;
+            }
 
-            if (switchEnter) Navigation.PushAsync(new HomePage());
+            if (switchEnter)Navigation.PushAsync(new HomePage());
+        }
+        private void RegisterUserButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new RegisterPage());
         }
     }
 }

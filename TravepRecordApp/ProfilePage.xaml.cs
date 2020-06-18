@@ -26,7 +26,7 @@ namespace TravepRecordApp
                 using (SQLiteConnection conn = new SQLiteConnection(App.DBLocation)) // this way you don't have to remember to close de connection
                 {
                     conn.CreateTable<Post>();
-                    List<Post> postTable = conn.Table<Post>().ToList();
+                    List<Post> postTable = conn.Table<Post>().Where(p => p.Email == App.userLogged.Email).ToList();
                     lblPostCount.Text = postTable.Count.ToString();
 
                     List<string> categories  = (from p in postTable orderby p.VenueCategoryId select p.VenueCategoryName).Distinct().ToList();

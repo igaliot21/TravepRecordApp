@@ -30,7 +30,8 @@ namespace TravepRecordApp
             using (SQLiteConnection conn = new SQLiteConnection(App.DBLocation)) // this way you don't have to remember to close de connection
             {
                 conn.CreateTable<Post>();
-                List<Post> posts = conn.Table<Post>().ToList();
+                //List<Post> posts = conn.Table<Post>().ToList();
+                List<Post> posts = conn.Table<Post>().Where(p => p.Email == App.userLogged.Email).ToList();
                 //var posts = conn.Table<Post>().ToList();
                 listViewPost.ItemsSource = posts;
             }

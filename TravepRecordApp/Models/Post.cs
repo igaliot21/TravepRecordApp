@@ -8,6 +8,7 @@ namespace TravepRecordApp.Models
     public class Post
     {
         private int id;
+        private string email;
         private string experience;
         private string venue_name;
         private string venue_address;
@@ -20,8 +21,9 @@ namespace TravepRecordApp.Models
         public Post(string Experience) {
             this.experience = Experience;
         }
-        public Post(string Experience, string VenueName, string VenueAddress, double VenueLatitude, double VenueLongitude, string VenueCategoryId, string VenueCategoryName){
+        public Post(string Experience, string Email, string VenueName, string VenueAddress, double VenueLatitude, double VenueLongitude, string VenueCategoryId, string VenueCategoryName){
             this.experience         = Experience;
+            this.email              = Email;
             this.venue_name         = VenueName;
             this.venue_address      = VenueAddress;
             this.venue_latitude     = VenueLatitude;
@@ -40,6 +42,12 @@ namespace TravepRecordApp.Models
         public string Experience{
             get { return this.experience; }
             set { this.experience = value; }
+        }
+        [MaxLength(255)]
+        public string Email
+        {
+            get { return this.email; }
+            set { this.email = value; }
         }
         [MaxLength(255)]
         public string VenueName {

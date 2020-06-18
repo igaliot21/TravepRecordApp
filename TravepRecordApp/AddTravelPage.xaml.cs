@@ -43,7 +43,7 @@ namespace TravepRecordApp
                 {
                     //Post post = new Post(editExperience.Text);
                     Venue selectedVenue = listViewVenues.SelectedItem as Venue;
-                    Post post = new Post(editExperience.Text, selectedVenue.name, selectedVenue.location.address,
+                    Post post = new Post(editExperience.Text,App.userLogged.Email, selectedVenue.name, selectedVenue.location.address,
                                          selectedVenue.location.lat, selectedVenue.location.lng,
                                          selectedVenue.categories.FirstOrDefault().id, selectedVenue.categories.FirstOrDefault().name);
 

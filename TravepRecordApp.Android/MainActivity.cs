@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Android.Graphics;
 using Android;
+using Microsoft.WindowsAzure.MobileServices;
 
 namespace TravepRecordApp.Droid
 {
@@ -24,6 +25,7 @@ namespace TravepRecordApp.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             Xamarin.FormsMaps.Init(this, savedInstanceState);
+            //CurrentPlatform.Init(); // not really working, i can't getting azure to work.... shitty thing....
 
             if (CheckSelfPermission(Manifest.Permission.AccessCoarseLocation) != (int)Permission.Granted)
             {
