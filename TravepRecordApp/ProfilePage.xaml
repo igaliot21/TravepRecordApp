@@ -13,7 +13,7 @@
                 TextColor="DarkSlateGray" FontAttributes="Bold" FontSize="20" />
             <ListView x:Name="listviewCategories" Margin="0,20,0,10">
                 <ListView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate> 
                         <TextCell Text="{Binding Path=Key}" Detail="{Binding Path=Value}"></TextCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
