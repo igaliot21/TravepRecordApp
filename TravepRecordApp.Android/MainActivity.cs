@@ -8,7 +8,6 @@ using Android.Widget;
 using Android.OS;
 using Android.Graphics;
 using Android;
-using Microsoft.WindowsAzure.MobileServices;
 
 namespace TravepRecordApp.Droid
 {

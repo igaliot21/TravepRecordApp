@@ -1,7 +1,11 @@
-﻿using SQLite;
+﻿using MySql.Data.MySqlClient;
+using MySqlConnector;
+using MySqlX.XDevAPI.Relational;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,7 +45,28 @@ namespace TravepRecordApp
                 }
                 else switchEnter = true;
             }
-            using (SQLiteConnection conn = new SQLiteConnection(App.DBLocation)) 
+            /*
+                        string MySQLConnectionString = "Server=192.168.1.20;Database=Curso_SQL;Uid=XamarinTest;Pwd=xamarintest;Port=3306;";
+                        string MySQLQuery = "SELECT * FROM `CLIENTES` LIMIT 0 , 30";
+
+                        try
+                        {
+                            using (MySqlConnection MySQLconn = new MySqlConnection(MySQLConnectionString))
+                            {
+                                MySQLconn.Open();
+                                MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(MySQLQuery, MySQLconn);
+                                DataTable MySQLTable = new DataTable();
+                                MySQLTable.TableName = "";
+                                mySqlDataAdapter.Fill(MySQLTable);
+                            }
+                        }
+                        catch(Exception ex) {
+                            string ex_message = ex.Message;
+                            string ex_stacktrace = ex.StackTrace;
+                        }
+            */
+
+            using (SQLiteConnection conn = new SQLiteConnection(App.DBLocation))
             {
                 conn.CreateTable<User>();
                 User userLogging = conn.Table<User>().ToList().Find(u => u.Email == entUser.Text && u.Password == entPassword.Text);
