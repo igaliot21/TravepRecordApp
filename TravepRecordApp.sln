@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravepRecordApp.Android", "TravepRecordApp.Android\TravepRecordApp.Android.csproj", "{55942018-DE8D-4296-AFBC-7CCF88D54B3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravepRecordApp.iOS", "TravepRecordApp.iOS\TravepRecordApp.iOS.csproj", "{AF035EFA-1D2F-4BAE-8814-8CBB34257862}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravepRecordApp", "TravepRecordApp\TravepRecordApp.csproj", "{370B8E92-EE70-447F-93CA-447A1CA4DD99}"
 EndProject
 Global
@@ -61,42 +59,6 @@ Global
 		{55942018-DE8D-4296-AFBC-7CCF88D54B3D}.Release|x86.ActiveCfg = Release|Any CPU
 		{55942018-DE8D-4296-AFBC-7CCF88D54B3D}.Release|x86.Build.0 = Release|Any CPU
 		{55942018-DE8D-4296-AFBC-7CCF88D54B3D}.Release|x86.Deploy.0 = Release|Any CPU
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Debug|Any CPU.ActiveCfg = Debug|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Debug|Any CPU.Build.0 = Debug|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Debug|Any CPU.Deploy.0 = Debug|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Debug|ARM.ActiveCfg = Debug|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Debug|ARM.Build.0 = Debug|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Debug|ARM.Deploy.0 = Debug|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Debug|iPhone.ActiveCfg = Debug|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Debug|iPhone.Build.0 = Debug|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Debug|iPhone.Deploy.0 = Debug|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Debug|iPhoneSimulator.Deploy.0 = Debug|iPhoneSimulator
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Debug|x64.ActiveCfg = Debug|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Debug|x64.Build.0 = Debug|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Debug|x64.Deploy.0 = Debug|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Debug|x86.ActiveCfg = Debug|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Debug|x86.Build.0 = Debug|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Debug|x86.Deploy.0 = Debug|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Release|Any CPU.ActiveCfg = Release|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Release|Any CPU.Build.0 = Release|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Release|Any CPU.Deploy.0 = Release|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Release|ARM.ActiveCfg = Release|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Release|ARM.Build.0 = Release|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Release|ARM.Deploy.0 = Release|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Release|iPhone.ActiveCfg = Release|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Release|iPhone.Build.0 = Release|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Release|iPhone.Deploy.0 = Release|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Release|iPhoneSimulator.Deploy.0 = Release|iPhoneSimulator
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Release|x64.ActiveCfg = Release|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Release|x64.Build.0 = Release|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Release|x64.Deploy.0 = Release|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Release|x86.ActiveCfg = Release|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Release|x86.Build.0 = Release|iPhone
-		{AF035EFA-1D2F-4BAE-8814-8CBB34257862}.Release|x86.Deploy.0 = Release|iPhone
 		{370B8E92-EE70-447F-93CA-447A1CA4DD99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{370B8E92-EE70-447F-93CA-447A1CA4DD99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{370B8E92-EE70-447F-93CA-447A1CA4DD99}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
