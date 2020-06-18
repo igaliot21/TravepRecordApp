@@ -1,5 +1,4 @@
-﻿using Microsoft.WindowsAzure.MobileServices;
-using System;
+﻿using System;
 using TravepRecordApp.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
