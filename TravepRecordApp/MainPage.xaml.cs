@@ -15,24 +15,20 @@ namespace TravepRecordApp
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
-        public MainPage()
-        {
+        public MainPage(){
             InitializeComponent();
             var assembly = typeof(MainPage);
             imgMainPage.Source = ImageSource.FromResource("TravepRecordApp.Resources.Images.plane.png",assembly);
         }
 
-        private void LogInButton_Clicked(object sender, EventArgs e)
-        {
+        private void LogInButton_Clicked(object sender, EventArgs e){
             bool switchEnter = false;
-            if (string.IsNullOrEmpty(entUser.Text))
-            {
+            if (string.IsNullOrEmpty(entUser.Text)){
                 entUser.Placeholder = "Enter User Email";
                 entUser.PlaceholderColor = Color.Red;
                 switchEnter = false;
             }
-            else
-            {
+            else{
                 if (string.IsNullOrEmpty(entPassword.Text))
                 {
                     entPassword.Placeholder = "Enter User Password";
@@ -41,19 +37,14 @@ namespace TravepRecordApp
                 }
                 else switchEnter = true;
             }
-            using (SQLiteConnection conn = new SQLiteConnection(App.DBLocation)) 
-            {
-                conn.CreateTable<User>();
-                User userLogging = conn.Table<User>().ToList().Find(u => u.Email == entUser.Text && u.Password == entPassword.Text);
-                //List<User> userTable = conn.Table<User>().ToList();
-                //User userLogged = userTable.Find(u => u.Email == entUser.Text && u.Password == entPassword.Text);
+            using (SQLiteConnection conn = new SQLiteConnection(App.DBLocation)){
+                User userLogging = User.RetrieveUser(conn, entUser.Text, entPassword.Text);
                 if (userLogging == null) {
                     DisplayAlert("Meeeec!!", "Email or password are incorrect", "Ok");
                     switchEnter = false;
                 }
                 else App.userLogged = userLogging;
             }
-
             if (switchEnter)Navigation.PushAsync(new HomePage());
         }
         private void RegisterUserButton_Clicked(object sender, EventArgs e)

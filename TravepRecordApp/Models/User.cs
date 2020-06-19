@@ -32,5 +32,22 @@ namespace TravepRecordApp.Models
             get { return this.password; }
             set { this.password = value; }
         }
+        public static User RetrieveUser(SQLiteConnection Connection, string UserEmail, string Password) {
+            Connection.CreateTable<User>();
+            User user = Connection.Table<User>().ToList().Find(u => u.Email == UserEmail && u.Password == Password);
+            return user;         
+        }
+        public static User RetrieveUser(SQLiteConnection Connection, string UserEmail)
+        {
+            Connection.CreateTable<User>();
+            User user = Connection.Table<User>().ToList().Find(u => u.Email == UserEmail);
+            return user;
+        }
+        public static int Insert(SQLiteConnection Connection, string UserEmail, string Password) {
+            User user = new User(UserEmail, Password);
+            Connection.CreateTable<User>();
+            int rows = Connection.Insert(user); //this returns the number of rows inserted
+            return rows;
+        }
     }
 }

@@ -25,23 +25,15 @@ namespace TravepRecordApp
             {
                 using (SQLiteConnection conn = new SQLiteConnection(App.DBLocation)) // this way you don't have to remember to close de connection
                 {
-                    conn.CreateTable<Post>();
-                    List<Post> postTable = conn.Table<Post>().Where(p => p.Email == App.userLogged.Email).ToList();
+                    List<Post> postTable = Post.RetrievePost(conn, App.userLogged.Email);
                     lblPostCount.Text = postTable.Count.ToString();
 
                     List<string> categories  = (from p in postTable orderby p.VenueCategoryId select p.VenueCategoryName).Distinct().ToList();
-                    // List<string> categroies2 = postTable.OrderBy(p => p.VenueCategoryId).Select(p => p.VenueCategoryName).Distinct().ToList(); // the same as before just simplier, i prefer the full linq method
-
                     Dictionary<string, int> categoriesCount = new Dictionary<string, int>();
                     
                     foreach (string category in categories) {
-                        
                         int count = (from p in postTable where p.VenueCategoryName == category select p).Count();
-                        
-                        //int count = postTable.Where(p => p.VenueCategoryName == category).Count(); // the same as before just simplier, i prefer the full linq method
-                        
                         categoriesCount.Add(category, count);
-
                     }
                     listviewCategories.ItemsSource = categoriesCount;
                 }

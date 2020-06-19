@@ -31,16 +31,9 @@ namespace TravepRecordApp
             var position = await locator.GetPositionAsync();
 
             locationsMap.MoveToRegion(new MapSpan(new Position(position.Latitude, position.Longitude), 2, 2));
-            /*
-            Position center = new Position(position.Latitude, position.Longitude);
-            MapSpan span = new MapSpan(center, 2, 2);
-            locationsMap.MoveToRegion(span);
-            */
             using (SQLiteConnection conn = new SQLiteConnection(App.DBLocation)) // this way you don't have to remember to close de connection
             {
-                conn.CreateTable<Post>();
-                List<Post> posts = conn.Table<Post>().Where(p => p.Email == App.userLogged.Email).ToList();
-
+                List<Post> posts = Post.RetrievePost(conn, App.userLogged.Email);
                 DisplayInMap(posts);
             }
         }
@@ -56,7 +49,6 @@ namespace TravepRecordApp
 
         private void DisplayInMap(List<Post> posts)
         {
-
             foreach (Post post in posts)
             {
                 try

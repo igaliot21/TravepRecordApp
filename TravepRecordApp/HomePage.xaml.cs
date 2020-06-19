@@ -12,13 +12,10 @@ namespace TravepRecordApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : TabbedPage
     {
-        public HomePage()
-        {
+        public HomePage(){
             InitializeComponent();
         }
-
-        private void btnAdd_Clicked(object sender, EventArgs e)
-        {
+        private void btnAdd_Clicked(object sender, EventArgs e){
             Navigation.PushAsync(new AddTravelPage());
         }
     }

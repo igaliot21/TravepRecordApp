@@ -31,26 +31,20 @@ namespace TravepRecordApp
                 DisplayAlert("Meeeeeeeeec!", "Password don't match", "Ok");
             }
             else{
-                User user = new User(entUser.Text, entPassword.Text);
-                using (SQLiteConnection conn = new SQLiteConnection(App.DBLocation)) // this way you don't have to remember to close de connection
-                {
-                    User userExist = conn.Table<User>().ToList().Find(u => u.Email == entUser.Text);
+                using (SQLiteConnection conn = new SQLiteConnection(App.DBLocation)){ // this way you don't have to remember to close de connection
+                    User userExist = User.RetrieveUser(conn, entUser.Text);
                     if (userExist != null){
                         DisplayAlert("Meeeec!!", "User already exists", "Ok");
                     }
                     else{
-                        conn.CreateTable<User>();
-                        int rows = conn.Insert(user); //this returns the number of rows inserted
-
-                        if (rows > 0)
-                        {
+                        int rows = User.Insert(conn, entUser.Text, entPassword.Text);
+                        if (rows > 0){
                             DisplayAlert("Success", "User registered", "Ok");
                             Navigation.PushAsync(new MainPage());
                         }
                         else DisplayAlert("Meeeec!!", "Something went wrong, user not registered", "Ok");
                     }
                 }
-                //await App.MobileService.GetTable<User>().InsertAsync(user); // not really working, i can't getting azure to work.... shitty thing....
             }
         }
     }

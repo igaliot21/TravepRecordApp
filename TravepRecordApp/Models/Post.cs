@@ -77,5 +77,20 @@ namespace TravepRecordApp.Models
             get { return this.venue_categoryname; }
             set { this.venue_categoryname = value; }
         }
+        public static int Insert(SQLiteConnection Connection, Post PostToInsert){
+            Connection.CreateTable<Post>();
+            int rows = Connection.Insert(PostToInsert); //this returns the number of rows inserted
+            return rows;
+        }
+        public static int Delete(SQLiteConnection Connection, Post PostToDelete){
+            Connection.CreateTable<Post>();
+            int rows = Connection.Delete(PostToDelete); //this returns the number of rows deleted
+            return rows;
+        }
+        public static List<Post> RetrievePost(SQLiteConnection Connection, string UserEmail) {
+            Connection.CreateTable<Post>();
+            List<Post> posts = Connection.Table<Post>().Where(p => p.Email == UserEmail).ToList();
+            return posts;
+        }
     }
 }
