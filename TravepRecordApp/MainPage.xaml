@@ -13,10 +13,15 @@
            HorizontalOptions="Center"
            VerticalOptions="Center" FontSize="Large" Margin="0,0,0,150" />
         -->
-        <Entry x:Name="entUser" Placeholder="User Email" Text="igaliot21@gmail.com" Margin="0,30,0,0" Keyboard="Email" TextColor="{StaticResource blueColor}"></Entry>
-        <Entry x:Name="entPassword" Placeholder="User Password" Text="ayanami" IsPassword="True" TextColor="{StaticResource blueColor}"></Entry>
-        <Button x:Name="LogInButton" Text="Log In" 
-                Clicked="LogInButton_Clicked"
+        <Entry x:Name="entUser" Placeholder="User Email" Margin="0,30,0,0" 
+               Keyboard="Email" TextColor="{StaticResource blueColor}"
+               Text="{Binding Email, Mode=TwoWay}"></Entry>
+        <Entry x:Name="entPassword" Placeholder="User Password" IsPassword="True" 
+               TextColor="{StaticResource blueColor}"
+               Text="{Binding Password, Mode=TwoWay}"></Entry>
+        <Button x:Name="LogInButton" Text="Log In"  
+                Command="{Binding loginCommand}"
+                CommandParameter="{Binding User}"
                 Margin="0,20,0,0"
                 Style="{StaticResource normalButton}"></Button>
         <Button x:Name="RegisterUserButton" Text="Register" 
