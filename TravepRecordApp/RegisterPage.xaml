@@ -5,10 +5,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="TravepRecordApp.RegisterPage">
-    <StackLayout VerticalOptions="CenterAndExpand" Margin="15,0,15,0">
-        <Entry x:Name="entUser" Placeholder="User Email" Keyboard="Email" TextColor="{StaticResource blueColor}"></Entry>
-        <Entry x:Name="entPassword" Placeholder="User Password" IsPassword="True" TextColor="{StaticResource blueColor}"></Entry>
-        <Entry x:Name="entConfirmPassword" Placeholder="Confirm Password" IsPassword="True" TextColor="{StaticResource blueColor}"></Entry>
+    <StackLayout x:Name="stackRegister" VerticalOptions="CenterAndExpand" Margin="15,0,15,0">
+        <Entry x:Name="entUser" Placeholder="User Email" 
+               Keyboard="Email" TextColor="{StaticResource blueColor}"
+               Text="{Binding Email, Mode=TwoWay}"></Entry>
+        <Entry x:Name="entPassword" Placeholder="User Password" 
+               IsPassword="True" TextColor="{StaticResource blueColor}"
+               Text="{Binding Password, Mode=TwoWay}"></Entry>
+        <Entry x:Name="entConfirmPassword" Placeholder="Confirm Password" 
+               IsPassword="True" TextColor="{StaticResource blueColor}"></Entry>
         <Button x:Name="RegisterButton" Text="Register" 
                 Clicked="RegisterButton_Clicked"
                 Margin="0,20,0,0"

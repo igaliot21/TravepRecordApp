@@ -16,9 +16,12 @@ namespace TravepRecordApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddTravelPage : ContentPage
     {
+        Post newPost;
         public AddTravelPage()
         {
             InitializeComponent();
+            newPost = new Post();
+            stackNewExperience.BindingContext = newPost;
         }
 
         protected async override void OnAppearing()
@@ -29,7 +32,7 @@ namespace TravepRecordApp
             var position = await locator.GetPositionAsync();
             var venues = await Venue.GetVenues(position.Latitude,position.Longitude);
             
-            listViewVenues.ItemsSource = venues;
+            listViewVenues.ItemsSource = venues; 
         }
 
         private void btnSaveTravel_Clicked(object sender, EventArgs e){
@@ -37,12 +40,18 @@ namespace TravepRecordApp
                 if (string.IsNullOrEmpty(editExperience.Text)) DisplayAlert("Meeeec!!", "You HAVE to write something, anything, i won't judge... much...", "Ok");
                 else
                 {
-                    Venue selectedVenue = listViewVenues.SelectedItem as Venue;
-                    Post post = new Post(editExperience.Text,App.userLogged.Email, selectedVenue.name, selectedVenue.location.address,
-                                         selectedVenue.location.lat, selectedVenue.location.lng,
-                                         selectedVenue.categories.FirstOrDefault().id, selectedVenue.categories.FirstOrDefault().name);
+                    Venue selectedVenue       = listViewVenues.SelectedItem as Venue;
+                    
+                    newPost.Email             = App.userLogged.Email;
+                    newPost.VenueName         = selectedVenue.name;
+                    newPost.VenueAddress      = selectedVenue.location.address;
+                    newPost.VenueLatitude     = selectedVenue.location.lat;
+                    newPost.VenueLongitude    = selectedVenue.location.lng;
+                    newPost.VenueCategoryId   = selectedVenue.categories.FirstOrDefault().id;
+                    newPost.VenueCategoryName = selectedVenue.categories.FirstOrDefault().name;
+
                     using (SQLiteConnection conn = new SQLiteConnection(App.DBLocation)){ // this way you don't have to remember to close de connection
-                        int rows = Post.Insert(conn, post);
+                        int rows = Post.Insert(conn, newPost);
                         if (rows > 0){
                             DisplayAlert("Sucess", "Experience succesfully inserted", "Ok");
                             Navigation.PushAsync(new HomePage());

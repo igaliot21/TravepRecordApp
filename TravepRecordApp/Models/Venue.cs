@@ -10,8 +10,8 @@ namespace TravepRecordApp.Models
 {
     public class VenueRoot{
         public Response response { get; set; }
-        public static string GenerateURL(double latitude, double longitude) {
-            return string.Format(Constants.FQ_VENUE_SEARCH, latitude, longitude, Constants.FQ_CLIENT_ID, Constants.FQ_CLIENT_SECRET,DateTime.Now.ToString("yyyyMMdd"));
+        public static string GenerateURL(string API_Url, string APICLientId, string APIClientSecret, double latitude, double longitude) {
+            return string.Format(API_Url, latitude, longitude, APICLientId, APIClientSecret, DateTime.Now.ToString("yyyyMMdd"));
         }
     }
     public class Response{
@@ -26,7 +26,7 @@ namespace TravepRecordApp.Models
         {
             List<Venue> venues = new List<Venue>();
 
-            string url = VenueRoot.GenerateURL(latitude, longitude);
+            string url = VenueRoot.GenerateURL(Constants.FQ_VENUE_SEARCH,Constants.FQ_CLIENT_ID,Constants.FQ_CLIENT_SECRET, latitude, longitude);
             using (HttpClient client = new HttpClient())
             {
                 var response = await client.GetAsync(url);

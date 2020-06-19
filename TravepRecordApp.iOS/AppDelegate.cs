@@ -5,7 +5,6 @@ using System.IO;
 
 using Foundation;
 using UIKit;
-using Microsoft.WindowsAzure.MobileServices;
 
 namespace TravepRecordApp.iOS
 {

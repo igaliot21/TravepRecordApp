@@ -9,9 +9,12 @@
         <ToolbarItem x:Name="btnSaveTravel" Text="Save" IconImageSource="save.png" Clicked="btnSaveTravel_Clicked"></ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout Margin="20,50,20,1">
-            <Editor x:Name="editExperience" Placeholder="Entry your experience" HeightRequest="150"></Editor>
-            <ListView x:Name="listViewVenues" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout Margin="20,50,20,1" x:Name="stackNewExperience">
+            <Editor x:Name="editExperience" 
+                    Placeholder="Entry your experience" HeightRequest="150"
+                    Text="{Binding Experience, Mode=TwoWay}"></Editor>
+            <ListView x:Name="listViewVenues" 
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -24,9 +27,13 @@
                                     <RowDefinition Height="*"></RowDefinition>
                                     <RowDefinition Height="*"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding name}" FontAttributes="Bold"></Label>
-                                <Label Grid.Row="1" Grid.Column="0" TextColor="{StaticResource blueColor}" Text="{Binding location.address}"></Label>
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding location.distance, StringFormat='{0} m'}"></Label>
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding name}" 
+                                       FontAttributes="Bold"></Label>
+                                <Label Grid.Row="1" Grid.Column="0" 
+                                       TextColor="{StaticResource blueColor}" 
+                                       Text="{Binding location.address}"></Label>
+                                <Label Grid.Row="0" Grid.Column="1" 
+                                       Text="{Binding location.distance, StringFormat='{0} m'}"></Label>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

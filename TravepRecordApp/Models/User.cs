@@ -1,15 +1,18 @@
 ﻿using SQLite;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace TravepRecordApp.Models
 {
-    public class User
+    public class User : INotifyPropertyChanged
     {
         private int id;
         private string email;
         private string password;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public User() { }
         public User(string Email, string Password) {
@@ -20,17 +23,30 @@ namespace TravepRecordApp.Models
         [AutoIncrement]
         public int Id{
             get { return this.id; }
-            set { this.id = value; }
+            set { 
+                this.id = value;
+                OnPropertyChanged("Id");
+            }
         }
         [MaxLength(255)]
         public string Email{
             get { return this.email; }
-            set { this.email = value; }
+            set { 
+                this.email = value;
+                OnPropertyChanged("Email");
+            }
         }
         [MaxLength(255)]
         public string Password{
             get { return this.password; }
-            set { this.password = value; }
+            set { 
+                this.password = value;
+                OnPropertyChanged("Password");
+            }
+        }
+        private void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
         public static User RetrieveUser(SQLiteConnection Connection, string UserEmail, string Password) {
             Connection.CreateTable<User>();
@@ -43,10 +59,9 @@ namespace TravepRecordApp.Models
             User user = Connection.Table<User>().ToList().Find(u => u.Email == UserEmail);
             return user;
         }
-        public static int Insert(SQLiteConnection Connection, string UserEmail, string Password) {
-            User user = new User(UserEmail, Password);
+        public static int Insert(SQLiteConnection Connection, User UserToInsert) {
             Connection.CreateTable<User>();
-            int rows = Connection.Insert(user); //this returns the number of rows inserted
+            int rows = Connection.Insert(UserToInsert); //this returns the number of rows inserted
             return rows;
         }
     }
