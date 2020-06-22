@@ -4,20 +4,31 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="TravepRecordApp.HistoryPage">
+             x:Class="TravepRecordApp.HistoryPage"
+             xmlns:converters="clr-namespace:TravepRecordApp.ViewModel.Converters">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:DateTimeToStringConverter x:Key="DatetimeConverter"></converters:DateTimeToStringConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ListView x:Name="listViewPost" Margin="10">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
                     <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="auto"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="{Binding Experience}" FontAttributes="Bold"></Label>
-                        <Button Grid.Column="1" x:Name="btnDeleteHistory" ImageSource="delete.png" Clicked="btnDeleteHistory_Clicked" 
+                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding Experience}" FontAttributes="Bold"></Label>
+                        <Button Grid.Row="0" Grid.Column="1" x:Name="btnDeleteHistory" ImageSource="delete.png" Clicked="btnDeleteHistory_Clicked" 
                                 BackgroundColor="Transparent" TextColor="Transparent">
                         </Button>
+                        <Label Grid.Row="1" Grid.Column="0" Text="{Binding ExperienceDate, Converter={StaticResource DatetimeConverter}}" FontSize="10"></Label>
                     </Grid>
                 </ViewCell>
             </DataTemplate>

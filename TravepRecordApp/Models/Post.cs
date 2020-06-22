@@ -13,6 +13,7 @@ namespace TravepRecordApp.Models
 		private int id;
 		private string email;
 		private string experience;
+		private DateTimeOffset experiencdedate;
 		private string venue_name;
 		private string venue_address;
 		private double venue_latitude;
@@ -25,6 +26,11 @@ namespace TravepRecordApp.Models
         public Post() { }
 		public Post(string Experience) {
 			this.experience = Experience;
+		}
+		public Post(string Experience, DateTimeOffset ExperienceDate)
+		{
+			this.experience = Experience;
+			this.experiencdedate = ExperienceDate;
 		}
 		public Post(string Experience, string Email, string VenueName, string VenueAddress, double VenueLatitude, double VenueLongitude, string VenueCategoryId, string VenueCategoryName){
 			this.experience         = Experience;
@@ -52,6 +58,14 @@ namespace TravepRecordApp.Models
 			set { 
 				this.experience = value;
 				OnPropertyChanged("Experience");
+			}
+		}
+		public DateTimeOffset ExperienceDate
+		{
+			get { return this.experiencdedate; }
+			set{
+				this.experiencdedate = value;
+				OnPropertyChanged("ExperienceDate");
 			}
 		}
 		[MaxLength(255)]

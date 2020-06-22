@@ -41,7 +41,8 @@ namespace TravepRecordApp
                 else
                 {
                     Venue selectedVenue       = listViewVenues.SelectedItem as Venue;
-                    
+
+                    newPost.ExperienceDate    = DateTimeOffset.Now;  //DateTime.Now.ToString("yyyy’-‘MM’-‘dd’T’HH’:’mm’:’ss.fffffffK");
                     newPost.Email             = App.userLogged.Email;
                     newPost.VenueName         = selectedVenue.name;
                     newPost.VenueAddress      = selectedVenue.location.address;
