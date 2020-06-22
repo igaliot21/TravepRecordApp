@@ -10,6 +10,8 @@ using TravepRecordApp.Models;
 using SQLite;
 using System.Data;
 using Plugin.Geolocator;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 
 namespace TravepRecordApp
 {
@@ -27,12 +29,28 @@ namespace TravepRecordApp
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            
-            var locator = CrossGeolocator.Current;
-            var position = await locator.GetPositionAsync();
-            var venues = await Venue.GetVenues(position.Latitude,position.Longitude);
-            
-            listViewVenues.ItemsSource = venues; 
+
+            try{
+                var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Plugin.Permissions.Abstractions.Permission.Location);
+                if (status != PermissionStatus.Granted) {
+                    if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Location)) {
+                        await DisplayAlert("Need permission", "I wasn't really asking... GIVE IT!!", "Sure");
+                    }
+                    var result = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
+                    if (result.ContainsKey(Permission.Location)) status = result[Permission.Location];
+                }
+
+                if (status == PermissionStatus.Granted) {
+                    var locator = CrossGeolocator.Current;
+                    var position = await locator.GetPositionAsync();
+                    var venues = await Venue.GetVenues(position.Latitude, position.Longitude);
+                    listViewVenues.ItemsSource = venues;
+                }
+                else{
+                    await DisplayAlert("No permission", "Well well well... look what we have here.... i won't forgetting this anytime soon... traitor", "Whatever");
+                }
+            }
+            catch (Exception ex) { }
         }
 
         private void btnSaveTravel_Clicked(object sender, EventArgs e){
