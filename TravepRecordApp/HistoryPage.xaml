@@ -11,7 +11,7 @@
             <converters:DateTimeToStringConverter x:Key="DatetimeConverter"></converters:DateTimeToStringConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ListView x:Name="listViewPost" Margin="10">
+    <ListView x:Name="listViewPost" Margin="10" ItemsSource="{Binding Posts}">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>

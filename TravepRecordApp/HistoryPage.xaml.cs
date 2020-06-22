@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TravepRecordApp.Models;
+using TravepRecordApp.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,27 +14,21 @@ namespace TravepRecordApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HistoryPage : ContentPage
     {
+        HistoryViewModel viewModel;
         public HistoryPage(){
             InitializeComponent();
+            viewModel = new HistoryViewModel();
+            this.BindingContext = viewModel;
         }
         protected override void OnAppearing(){
             base.OnAppearing();
-            using (SQLiteConnection conn = new SQLiteConnection(App.DBLocation)){ // this way you don't have to remember to close de connection
-                List<Post> posts = Post.RetrievePost(conn, App.userLogged.Email);
-                listViewPost.ItemsSource = posts;
-            }
+            viewModel.UpdatePost();
         }
 
         private void btnDeleteHistory_Clicked(object sender, EventArgs e){
-            try{
-                Post selectedHistory = listViewPost.SelectedItem as Post;
-                using (SQLiteConnection conn = new SQLiteConnection(App.DBLocation)){ // this way you don't have to remember to close de connection
-                    Post.Delete(conn, selectedHistory);
-                    List<Post> posts = Post.RetrievePost(conn, App.userLogged.Email);
-                    listViewPost.ItemsSource = posts;
-                }
-            }
-            catch (Exception ex) { }
+            Post selectedHistory = listViewPost.SelectedItem as Post;
+            viewModel.DeletePost(selectedHistory);
+            viewModel.UpdatePost();
         }
     }
 }
