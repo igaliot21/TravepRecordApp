@@ -11,9 +11,18 @@
             <converters:DateTimeToStringConverter x:Key="DatetimeConverter"></converters:DateTimeToStringConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ListView x:Name="listViewPost" Margin="10" ItemsSource="{Binding Posts}">
+    <ListView x:Name="listViewPost" Margin="10" 
+              IsPullToRefreshEnabled="True"
+              Refreshing="listViewPost_Refreshing"
+              ItemsSource="{Binding Posts}">
         <ListView.ItemTemplate>
             <DataTemplate>
+                <TextCell Text="{Binding Experience}" Detail="{Binding ExperienceDate, Converter={StaticResource DatetimeConverter}}">
+                    <TextCell.ContextActions>
+                        <MenuItem Text="Delete" Clicked="btnDeleteHistory_Clicked" IsDestructive="True" IconImageSource="delete.png" CommandParameter="{Binding}"></MenuItem>
+                    </TextCell.ContextActions>
+                </TextCell>
+                <!--
                 <ViewCell>
                     <Grid CompressedLayout.IsHeadless="True">
                         <Grid.RowDefinitions>
@@ -31,6 +40,7 @@
                         <Label Grid.Row="1" Grid.Column="0" Text="{Binding ExperienceDate, Converter={StaticResource DatetimeConverter}}" FontSize="10"></Label>
                     </Grid>
                 </ViewCell>
+                -->
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>

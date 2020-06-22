@@ -24,11 +24,16 @@ namespace TravepRecordApp
             base.OnAppearing();
             viewModel.UpdatePost();
         }
-
         private void btnDeleteHistory_Clicked(object sender, EventArgs e){
-            Post selectedHistory = listViewPost.SelectedItem as Post;
-            viewModel.DeletePost(selectedHistory);
+            Post postToDelete = (Post)((MenuItem)sender).CommandParameter;
+            viewModel.DeletePost(postToDelete);
             viewModel.UpdatePost();
+        }
+
+        private void listViewPost_Refreshing(object sender, EventArgs e)
+        {
+            viewModel.UpdatePost();
+            listViewPost.IsRefreshing = false;
         }
     }
 }
