@@ -20,15 +20,11 @@ namespace TravepRecordApp
         MainViewModel viewModel;
         public MainPage(){
             InitializeComponent();
-            var assembly = typeof(MainPage);
             viewModel = new MainViewModel();
             this.BindingContext = viewModel;
+            //
+            var assembly = typeof(MainPage);
             imgMainPage.Source = ImageSource.FromResource("TravepRecordApp.Resources.Images.plane.png",assembly);
-        }
-
-        private void RegisterUserButton_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new RegisterPage());
         }
     }
 }

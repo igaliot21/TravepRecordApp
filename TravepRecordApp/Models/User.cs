@@ -11,13 +11,19 @@ namespace TravepRecordApp.Models
         private int id;
         private string email;
         private string password;
+        private string confirmpassword;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public User() { }
-        public User(string Email, string Password) {
+        public User(string Email, string Password){
             this.email = Email;
             this.password = Password;
+        }
+        public User(string Email, string Password, string ConfirmPassword) {
+            this.email = Email;
+            this.password = Password;
+            this.confirmpassword = ConfirmPassword;
         }
         [PrimaryKey]
         [AutoIncrement]
@@ -42,6 +48,14 @@ namespace TravepRecordApp.Models
             set { 
                 this.password = value;
                 OnPropertyChanged("Password");
+            }
+        }
+        [MaxLength(255)]
+        public string ConfirmPassword{
+            get { return this.confirmpassword; }
+            set{
+                this.confirmpassword = value;
+                OnPropertyChanged("ConfirmPassword");
             }
         }
         private void OnPropertyChanged(string propertyName)

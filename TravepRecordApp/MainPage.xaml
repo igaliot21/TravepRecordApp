@@ -25,7 +25,7 @@
                 Margin="0,20,0,0"
                 Style="{StaticResource normalButton}"></Button>
         <Button x:Name="RegisterUserButton" Text="Register" 
-                Clicked="RegisterUserButton_Clicked"
+                Command="{Binding newRegisterCommand}"
                 HorizontalOptions="End"
                 Margin="0,20,0,0"
                 TextColor="{StaticResource blueColor}"

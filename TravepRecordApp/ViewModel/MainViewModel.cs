@@ -12,11 +12,13 @@ namespace TravepRecordApp.ViewModel
     {
         private User user;
         private LoginCommand logincommand;
+        private NewRegisterCommand newregistercommand;
         private string email;
         private string password;
         public MainViewModel() {
             this.user = new User();
             this.logincommand = new LoginCommand(this);
+            this.newregistercommand = new NewRegisterCommand(this);
         }
         public User User {
             get { return this.user; }
@@ -25,7 +27,11 @@ namespace TravepRecordApp.ViewModel
                 OnPropertyChanged("User");
             }
         }
-        public LoginCommand loginCommand {
+        public NewRegisterCommand newRegisterCommand{
+            get { return this.newregistercommand; }
+            set { this.newregistercommand = value; }
+        }
+        public LoginCommand loginCommand{
             get { return this.logincommand; }
             set { this.logincommand = value; }
         }
@@ -48,10 +54,11 @@ namespace TravepRecordApp.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName){
-            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            if (PropertyChanged != null) 
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public void Login() {
+        public async void Login() {
             bool switchEnter = false;
             if (string.IsNullOrEmpty(user.Email)){
                 switchEnter = false;
@@ -65,12 +72,15 @@ namespace TravepRecordApp.ViewModel
             using (SQLiteConnection conn = new SQLiteConnection(App.DBLocation)){
                 User userLogging = User.RetrieveUser(conn, user.Email, user.Password);
                 if (userLogging == null){
-                    App.Current.MainPage.DisplayAlert("Meeeec!!", "Email or password are incorrect", "Ok");
+                    await App.Current.MainPage.DisplayAlert("Meeeec!!", "Email or password are incorrect", "Ok");
                     switchEnter = false;
                 }
                 else App.userLogged = userLogging;
             }
-            if (switchEnter) App.Current.MainPage.Navigation.PushAsync(new HomePage());
+            if (switchEnter) await App.Current.MainPage.Navigation.PushAsync(new HomePage());
+        }
+        public async void NewRegister() {
+            await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());
         }
     }
 }
