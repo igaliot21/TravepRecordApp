@@ -11,7 +11,7 @@ namespace TravepRecordApp.Models
     public class VenueRoot{
         public Response response { get; set; }
         public static string GenerateURL(string API_Url, string APICLientId, string APIClientSecret, double latitude, double longitude) {
-            return string.Format(API_Url, latitude, longitude, APICLientId, APIClientSecret, DateTime.Now.ToString("yyyyMMdd"));
+            return string.Format(API_Url, latitude.ToString().Replace(",","."),longitude.ToString().Replace(",", "."), APICLientId, APIClientSecret, DateTime.Now.ToString("yyyyMMdd"));
         }
     }
     public class Response{
@@ -25,7 +25,6 @@ namespace TravepRecordApp.Models
         public async static Task<List<Venue>> GetVenues(double latitude, double longitude)
         {
             List<Venue> venues = new List<Venue>();
-
             string url = VenueRoot.GenerateURL(Constants.FQ_VENUE_SEARCH,Constants.FQ_CLIENT_ID,Constants.FQ_CLIENT_SECRET, latitude, longitude);
             using (HttpClient client = new HttpClient())
             {

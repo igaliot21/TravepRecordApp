@@ -5,9 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="TravepRecordApp.MainPage">
-
     <StackLayout VerticalOptions="CenterAndExpand" CompressedLayout.IsHeadless="True" Margin="15,0,15,0">
-        <Image x:Name="imgMainPage" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+
+        <Image x:Name="imgMainPage" Aspect="AspectFit" 
+               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+               HeightRequest="230"
+               WidthRequest="230"/>
         <!--
         <Label Text="Enter your Login Email and Password" 
            HorizontalOptions="Center"
@@ -29,7 +32,7 @@
                 HorizontalOptions="End"
                 Margin="0,20,0,0"
                 TextColor="{StaticResource blueColor}"
-                BackgroundColor="Transparent"></Button>        
+                BackgroundColor="Transparent"></Button>
     </StackLayout>
 
 </ContentPage>
